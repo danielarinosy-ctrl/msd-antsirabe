@@ -1,0 +1,133 @@
+/* ===== CONFIGURATION MSD ULTIMATE PERFECT ===== */
+:root {
+    --nav-gradient: linear-gradient(135deg, rgba(26, 35, 126, 0.98) 0%, rgba(13, 71, 161, 0.95) 50%, rgba(2, 136, 209, 0.9) 100%);
+    --primary: #0288d1;
+    --primary-glow: rgba(2, 136, 209, 0.6);
+    --sky-glow-subtle: rgba(179, 229, 252, 0.15);
+    
+    /* Transparence Extrême pour le verre */
+    --glass-bg: rgba(255, 255, 255, 0.08); 
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --text-on-glass: #ffffff; /* Texte blanc pour contraste */
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { 
+    font-family: 'Poppins', sans-serif; 
+    color: var(--text-on-glass); 
+    overflow-x: hidden; 
+    background: #0a122a; /* Fond sombre pour faire ressortir la transparence */
+}
+
+/* Animation de lueur bleu ciel douce et apaisante */
+@keyframes skyGlowPerfect {
+    0% { box-shadow: 0 0 40px rgba(2, 136, 209, 0.2); }
+    50% { box-shadow: 0 0 80px rgba(179, 229, 252, 0.4); }
+    100% { box-shadow: 0 0 40px rgba(2, 136, 209, 0.2); }
+}
+
+/* ===== HEADER ===== */
+header {
+    background: var(--nav-gradient);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 15px 0; position: fixed; width: 100%; top: 0; z-index: 1000;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.header-container { max-width: 1300px; margin: 0 auto; padding: 0 40px; display: flex; justify-content: space-between; align-items: center; }
+.logo h1 { font-family: 'Montserrat', sans-serif; color: white; font-size: 2.2rem; font-weight: 800; letter-spacing: 1px; }
+.logo p { color: var(--accent); font-size: 0.8rem; letter-spacing: 1px; margin-top: -5px; opacity: 0.9; }
+
+nav ul { display: flex; gap: 15px; list-style: none; }
+nav a { 
+    text-decoration: none; color: rgba(255,255,255,0.8); 
+    padding: 10px 20px; border-radius: 30px; 
+    border: 1px solid transparent; transition: 0.4s ease; 
+}
+nav a:hover, nav a.active { 
+    color: white; border-color: rgba(255,255,255,0.5); 
+    background: rgba(255,255,255,0.15); 
+}
+
+/* ===== SECTION HERO (Parfection de la Transparence) ===== */
+.hero-fullscreen {
+    height: 100vh; display: flex; align-items: center;
+    background: linear-gradient(rgba(10, 18, 42, 0.5), rgba(10, 18, 42, 0.7)), 
+                url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1920&q=80') center/cover fixed;
+    padding-top: 80px;
+}
+
+.hero-text h2 { font-size: 4.5rem; color: white; line-height: 1; font-weight: 800; text-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+.hero-text h2 span { color: var(--primary); text-shadow: 0 0 15px var(--primary-glow); }
+.hero-text p { font-size: 1.3rem; margin: 25px 0 40px; opacity: 0.9; }
+
+.btn-glow {
+    background: var(--primary); color: white; padding: 18px 45px; 
+    border-radius: 50px; text-decoration: none; font-weight: 600; 
+    display: inline-block; transition: 0.3s;
+    box-shadow: 0 0 15px var(--primary-glow);
+}
+.btn-glow:hover { transform: translateY(-3px); box-shadow: 0 0 30px var(--primary); }
+
+.image-blob {
+    width: 480px; height: 480px;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    animation: morph 8s ease-in-out infinite;
+    background: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80') center/cover;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+    border: 15px solid rgba(255,255,255,0.15); /* Transparence parfectionnée */
+}
+
+/* ===== CONTENU PRINCIPAL (Ultra-Transparent) ===== */
+.content-container {
+    background: rgba(10, 18, 42, 0.4); /* Fond sombre très transparent */
+    backdrop-filter: blur(25px); /* Flou augmenté pour lisibilité */
+    -webkit-backdrop-filter: blur(25px);
+    border-radius: 60px 60px 0 0;
+    margin-top: -80px; position: relative; z-index: 10;
+    border-top: 1px solid var(--glass-border);
+}
+
+.glass-section {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    margin: 60px auto; padding: 60px; border-radius: 40px;
+    max-width: 1100px;
+    animation: skyGlowPerfect 6s infinite alternate; /* Animation bleu ciel parfectionnée */
+    border: 1px solid var(--glass-border);
+}
+
+.section-title { font-size: 2.8rem; text-align: center; color: white; margin-bottom: 20px; font-weight: 700; text-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+
+.culture-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 50px; }
+.culture-card { border-radius: 25px; overflow: hidden; position: relative; height: 380px; box-shadow: 0 10px 20px rgba(0,0,0,0.3); border: 2px solid var(--glass-border); }
+.culture-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s ease; }
+.culture-card:hover img { transform: scale(1.1); }
+.culture-overlay {
+    position: absolute; bottom: 0; width: 100%; padding: 25px;
+    background: linear-gradient(transparent, rgba(10, 18, 42, 0.95));
+    color: white;
+}
+
+/* ===== FOOTER PAYSAGE PARFAIT ===== */
+.footer-landscape {
+    background: linear-gradient(rgba(10, 18, 42, 0.7), rgba(10, 18, 42, 0.9)), 
+                url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1920&q=80') center/cover fixed;
+    color: white; padding: 120px 40px 40px; text-align: center;
+    border-top: 1px solid var(--glass-border);
+}
+
+@keyframes morph {
+    0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+    50% { border-radius: 50% 50% 30% 70% / 50% 60% 40% 50%; }
+    100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .hero-text h2 { font-size: 3.2rem; }
+    .hero-fullscreen .hero-content { grid-template-columns: 1fr; text-align: center; gap: 30px; }
+    .image-blob { width: 350px; height: 350px; margin: 0 auto; }
+    .glass-section { padding: 40px; }
+}

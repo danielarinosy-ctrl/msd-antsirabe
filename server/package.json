@@ -1,0 +1,24 @@
+{
+  "name": "msd-backend",
+  "version": "1.0.0",
+  "description": "Serveur SMTP pour le site MSD Antsirabe",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "smtp",
+    "msd"
+  ],
+  "author": "Daniel Danzo",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^2.2.2",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "nodemailer": "^8.0.2"
+  }
+}

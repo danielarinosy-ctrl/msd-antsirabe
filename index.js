@@ -1,55 +1,54 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
-const bodyParser = require('body-parser');
 
 const app = express();
-
-// Configuration CORS pour autoriser ton site GitHub Pages
+app.use(express.json());
 app.use(cors());
-app.use(bodyParser.json());
 
-// Configuration SMTP pour Gmail
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: 'danielarinosy@gmail.com',
-        // Utilisation de ton mot de passe d'application direct pour le test
-        pass: 'stgk tftk ixgf fils' 
+// Route de test pour vérifier si le serveur est réveillé
+app.get('/', (req, res) => {
+    res.send('Serveur MSD Backend opérationnel !');
+});
+
+app.post('/send-email', async (req, res) => {
+    const { nom, email, message } = req.body;
+
+    // Configuration optimisée pour éviter l'erreur ENETUNREACH sur Render
+    const transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true, // Utilise SSL
+        auth: {
+            user: 'danielarinosy@gmail.com',
+            pass: 'stgktftkixgffils' // Ton code de 16 caractères sans espaces
+        },
+        connectionTimeout: 10000, // 10 secondes
+    });
+
+    const mailOptions = {
+        from: 'danielarinosy@gmail.com',
+        to: 'danielarinosy@gmail.com',
+        replyTo: email,
+        subject: `Nouveau message de ${nom} (Site MSD)`,
+        text: `Expéditeur : ${nom}\nEmail : ${email}\n\nMessage :\n${message}`
+    };
+
+    try {
+        console.log(`Tentative d'envoi pour ${nom}...`);
+        await transporter.sendMail(mailOptions);
+        console.log("✅ Email envoyé avec succès !");
+        res.status(200).json({ message: "Succès" });
+    } catch (error) {
+        console.error("❌ Erreur SMTP détaillée:", error);
+        res.status(500).json({ 
+            message: "Erreur lors de l'envoi", 
+            details: error.message 
+        });
     }
 });
 
-// Route pour l'envoi de l'email
-app.post('/send-email', (req, res) => {
-    const { nom, email, message } = req.body;
-
-    const mailOptions = {
-        from: 'danielarinosy@gmail.com', 
-        to: 'danielarinosy@gmail.com',   
-        replyTo: email,                  
-        subject: `MSD Antsirabe : Message de ${nom}`,
-        text: `Nom: ${nom}\nEmail du visiteur: ${email}\n\nMessage:\n${message}`
-    };
-
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            console.error("❌ Erreur SMTP :", error);
-            return res.status(500).json({ error: error.message });
-        }
-        console.log('✅ Email envoyé avec succès !');
-        res.status(200).json({ message: "Succès" });
-    });
-});
-
-// MODIFICATION ICI : process.env.PORT est requis pour le déploiement (Render, Heroku, etc.)
-const PORT = process.env.PORT || 3000;
-
+const PORT = process.env.PORT || 10000;
 app.listen(PORT, () => {
-    console.log(`
-    ===========================================
-    🚀 SERVEUR SMTP MSD EN LIGNE
-    📧 Email : danielarinosy@gmail.com
-    🌐 Port : ${PORT}
-    ===========================================
-    `);
+    console.log(`Serveur lancé sur le port ${PORT}`);
 });

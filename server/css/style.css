@@ -1,4 +1,4 @@
-/* ===== MSD ULTIMATE - VERSION FINALE CENTRÉE ===== */
+/* ===== MSD ULTIMATE - VERSION FINALE CENTRÉE & RESPONSIVE ===== */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Montserrat:wght@800&display=swap');
 
 :root {
@@ -35,18 +35,38 @@ nav ul { display: flex; gap: 8px; list-style: none; }
 nav a { text-decoration: none; color: white; padding: 8px 15px; border-radius: 12px; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
 nav a.active, nav a:hover { background: var(--glass-white-heavy); border: 1px solid var(--glass-border); }
 
-/* HERO */
-.hero-fullscreen { height: 100vh; display: flex; align-items: center; justify-content: center; padding-top: 80px; }
-.hero-content { display: grid; grid-template-columns: 1.2fr 0.8fr; align-items: center; max-width: 1250px; margin: 0 auto; padding: 0 40px; width: 100%; }
-.hero-text h2 { font-size: 4.2rem; line-height: 1.1; font-weight: 800; text-shadow: var(--text-shadow); margin-bottom: 20px; }
-.hero-text p { font-size: 1.25rem; margin-bottom: 30px; text-shadow: var(--text-shadow); max-width: 600px; }
-
-/* BOUTONS */
+/* BOUTONS GLASS (La partie qui manquait) */
 .btn-glass {
-    background: var(--glass-white-heavy); color: white; padding: 16px 40px; border-radius: 50px;
-    text-decoration: none; font-weight: 700; display: inline-block; transition: 0.3s; border: 1px solid var(--glass-border);
+    display: inline-block;
+    padding: 14px 30px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+    color: white !important;
+    text-decoration: none !important;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
 }
-.btn-glass:hover { background: white; color: #0a122a; transform: translateY(-3px); }
+
+.btn-glass:hover {
+    background: var(--glass-white-heavy);
+    transform: translateY(-3px);
+    border-color: white;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.4);
+}
+
+/* HERO */
+.hero-fullscreen { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding-top: 100px; padding-bottom: 50px; }
+.hero-content { display: grid; grid-template-columns: 1.2fr 0.8fr; align-items: center; max-width: 1250px; margin: 0 auto; padding: 0 40px; width: 100%; gap: 40px; }
+.hero-text h2 { font-size: 4.2rem; line-height: 1.1; font-weight: 800; text-shadow: var(--text-shadow); margin-bottom: 20px; }
+.hero-text p { font-size: 1.25rem; margin-bottom: 35px; text-shadow: var(--text-shadow); max-width: 600px; opacity: 0.9; }
 
 /* BLOB */
 .image-blob {
@@ -58,74 +78,52 @@ nav a.active, nav a:hover { background: var(--glass-white-heavy); border: 1px so
 /* CONTAINERS */
 .main-glass-container {
     background: var(--glass-white); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-    margin: 0 auto 80px; padding: 80px 40px; max-width: 1200px; border-radius: 40px;
+    margin: 0 auto 80px; padding: 60px 40px; max-width: 1200px; border-radius: 40px;
     border: 1px solid var(--glass-border); box-shadow: 0 20px 60px rgba(0,0,0,0.3);
 }
 
-.section-title { font-size: 3rem; text-align: center; margin-bottom: 60px; font-weight: 800; text-shadow: var(--text-shadow); }
-
-/* GRILLE */
+/* GRILLE ACTIVITÉS */
 .history-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
-.history-card { 
-    background: rgba(255,255,255,0.05); border-radius: 25px; overflow: hidden; 
-    border: 1px solid var(--glass-border); transition: 0.4s; 
-}
+.history-card { background: rgba(255,255,255,0.05); border-radius: 25px; overflow: hidden; border: 1px solid var(--glass-border); transition: 0.4s; }
 .history-card img { width: 100%; height: 260px; object-fit: cover; }
 .history-info { padding: 25px; }
 
-/* FOOTER (CORRECTIONS ICI) */
-footer {
-    padding: 60px 20px 80px;
-    display: flex;
-    justify-content: center; /* Centre horizontalement le container */
-    align-items: center;
-}
-
+/* FOOTER */
+footer { padding: 60px 20px; display: flex; justify-content: center; align-items: center; }
 .footer-card {
-    background: var(--glass-white);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    padding: 60px 40px;
-    border-radius: 30px;
-    border: 1px solid var(--glass-border);
-    max-width: 800px;
-    width: 100%;
-    text-align: center; /* Centre tous les textes à l'intérieur */
-    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    background: var(--glass-white); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    padding: 40px; border-radius: 30px; border: 1px solid var(--glass-border);
+    max-width: 800px; width: 100%; text-align: center;
+}
+.copyright { margin-top: 25px; font-size: 0.8rem; opacity: 0.6; }
+
+/* ===========================================
+   📱 MOBILE & RESPONSIVE (CORRECTIONS)
+   =========================================== */
+
+@media (max-width: 1024px) {
+    .hero-content { grid-template-columns: 1fr; text-align: center; }
+    .hero-text h2 { font-size: 3rem; }
+    .image-blob { width: 300px; height: 300px; margin: 40px auto 0; }
+    .history-grid { grid-template-columns: 1fr; }
 }
 
-.footer-card h2 {
-    font-size: 2.5rem;
-    font-weight: 800;
-    margin-bottom: 20px;
-    text-shadow: var(--text-shadow);
+@media (max-width: 768px) {
+    header { top: 0; width: 100%; border-radius: 0; border-left: none; border-right: none; padding: 10px 15px; }
+    .header-container { flex-direction: column; gap: 10px; }
+    nav ul { gap: 4px; flex-wrap: wrap; justify-content: center; }
+    nav a { padding: 6px 10px; font-size: 0.8rem; }
+    
+    .hero-text h2 { font-size: 2.2rem; }
+    .hero-text p { font-size: 1rem; margin-bottom: 25px; }
+    
+    .main-glass-container { margin: 20px; padding: 30px 20px; border-radius: 25px; }
+    
+    /* Correction de la grille "Qui sommes-nous" */
+    .about-grid { grid-template-columns: 1fr !important; gap: 30px !important; }
 }
-
-.footer-card p {
-    font-size: 1.1rem;
-    margin-bottom: 35px;
-    opacity: 0.9;
-}
-
-.footer-card .copyright {
-    margin-top: 50px;
-    font-size: 0.85rem;
-    opacity: 0.6;
-    letter-spacing: 1px;
-}
-
-/* ANIMATIONS JS CLASSES */
-.reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
-.reveal.active { opacity: 1; transform: translateY(0); }
 
 @keyframes morph {
     0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
     50% { border-radius: 50% 50% 30% 70% / 50% 60% 40% 50%; }
-}
-
-@media (max-width: 1024px) {
-    .hero-content { grid-template-columns: 1fr; text-align: center; }
-    .hero-text h2 { font-size: 2.8rem; }
-    .history-grid { grid-template-columns: 1fr; }
-    .image-blob { width: 300px; height: 300px; margin: 40px auto 0; }
 }
